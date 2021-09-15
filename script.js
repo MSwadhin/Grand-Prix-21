@@ -251,7 +251,7 @@ async function getContestStandings(participants){
     
     for(i=0;i<total;i++){
         let contestId = contestList[i];
-        await sleep(300).then( ()=>{
+        await sleep(1000).then( ()=>{
             var url = 'https://codeforces.com/api/contest.standings?contestId=' + contestId + handleOnUrl;
 			getStandings(url).then(
 				(data) => {
@@ -299,8 +299,9 @@ function getGPStanding(){
 					}
                 }
             }
-			console.log(participants);
-			getContestStandings(participants);
+			//console.log(participants);
+			//getContestStandings(participants);
+			getContestStandings( filterParticipants(participants) );
         })
         .catch( function(error) {
             console.log(error);
